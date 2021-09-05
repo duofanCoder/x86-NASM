@@ -70,19 +70,39 @@ new_int_0x70:
     mov [es:bx],ah
     mov [es:bx+2],al
 
+    xor al,al
+    cmp al,[es:bx+4]
+    jne .w0_2
+    
+    
+
     mov al,':'
     mov [es:bx+4],al
-    not byte [es:bx+5]
+    ; not byte [es:bx+5]
 
+    mov [es:bx+10],al
+    ; not byte[es:bx+11]
+    jmp .w0_keep_1
+
+.w0_2:
+    
+    mov [es:bx+4],al
+    ; not byte [es:bx+5]
+
+    mov [es:bx+10],al
+    ; not byte[es:bx+11]
+    jmp .w0_keep_1
+
+
+
+
+.w0_keep_1:
     pop ax
     call bcd_to_ascii
     mov [es:bx+6],ah
     mov [es:bx+8],al
 
-    mov al,':'
-    mov [es:bx+10],al
-    not byte[es:bx+11]
-
+    
     pop ax
     call bcd_to_ascii
     mov [es:bx+12],ah
