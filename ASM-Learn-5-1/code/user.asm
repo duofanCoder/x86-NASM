@@ -71,7 +71,7 @@ new_int_0x70:
     mov [es:bx+2],al
 
     mov al,':'
-    mov [es:bx+4],ah
+    mov [es:bx+4],al
     not byte [es:bx+5]
 
     pop ax
